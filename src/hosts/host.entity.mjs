@@ -5,7 +5,7 @@ import * as dgram from 'node:dgram'
 import * as nanoid from 'nanoid'
 import { config } from '../config.mjs'
 
-const generateOID = nanoid.customAlphabet(config.oid.charset, config.oid.length)
+const generateOID = config.words_oid.enabled ? () => generateWordId(config.words_oid.length) : nanoid.customAlphabet(config.oid.charset, config.oid.length)
 const generatePID = nanoid.customAlphabet(config.pid.charset, config.pid.length)
 
 /**
