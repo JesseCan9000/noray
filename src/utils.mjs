@@ -201,3 +201,23 @@ export function formatDuration (seconds) {
 
   return (seconds / multiplier) + unit
 }
+
+/**
+* Select random words from wordlist
+*
+* Used to generate a word based OID
+* For example, FalconTimberYolk
+* @param {integer} Word count
+* @returns {string} Concatenated words
+*/
+import words from './wordlist.mjs'
+
+export function generateWordId(wordCount = 3) {
+    let result = ''
+    for (let i = 0; i < wordCount; i++) {
+        const word = words[Math.floor(Math.random() * words.length)]
+        result += word
+    }
+
+    return result
+}
