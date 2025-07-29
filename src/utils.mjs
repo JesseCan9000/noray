@@ -205,19 +205,14 @@ export function formatDuration (seconds) {
 }
 
 /**
-* Select random words from wordlist
+* Select random words from wordlist.
 *
-* Used to generate a word based OID
-* For example, FalconTimberYolk
+* Used to generate a word based OID For example, FalconTimberYolk
 * @param {integer} Word count
 * @returns {string} Concatenated words
 */
 export function generateWordId (wordCount = 3) {
-  let result = ''
-  for (let i = 0; i < wordCount; i++) {
-    const word = words[Math.floor(Math.random() * words.length)]
-    result += word
-  }
-
-  return result
+  return [...crypto.getRandomValues(new Uint16Array(wordCount))]
+    .map(idx => words[idx % words.length])
+    .join('')
 }
