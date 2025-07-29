@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv'
-import { byteSize, duration, integer, number, ports } from './config.parsers.mjs'
+import { boolean, byteSize, duration, integer, number, ports } from './config.parsers.mjs'
 import logger, { getLogLevel } from './logger.mjs'
 import { urlAlphabet } from 'nanoid'
 
@@ -17,7 +17,7 @@ export class NorayConfig {
   }
 
   words_oid = {
-    enabled: env.NORAY_ENABLE_WORDS_OID === 'true',
+    enabled: boolean(env.NORAY_ENABLE_WORDS_OID) ?? false,
     length: integer(env.NORAY_WORDS_OID_LENGTH) ?? 3
   }
 
