@@ -20,7 +20,7 @@ export class NorayConfig {
     enabled: env.NORAY_ENABLE_WORDS_OID === 'true',
     length: integer(env.NORAY_WORDS_OID_LENGTH) ?? 3
   }
-  
+
   pid = {
     length: integer(env.NORAY_PID_LENGTH) ?? 128,
     charset: env.NORAY_PID_CHARSET ?? urlAlphabet

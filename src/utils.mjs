@@ -1,3 +1,5 @@
+import words from './wordlist.mjs'
+
 /**
 * Return current time ( seconds since epoch ).
 * @returns {number}
@@ -210,14 +212,12 @@ export function formatDuration (seconds) {
 * @param {integer} Word count
 * @returns {string} Concatenated words
 */
-import words from './wordlist.mjs'
+export function generateWordId (wordCount = 3) {
+  let result = ''
+  for (let i = 0; i < wordCount; i++) {
+    const word = words[Math.floor(Math.random() * words.length)]
+    result += word
+  }
 
-export function generateWordId(wordCount = 3) {
-    let result = ''
-    for (let i = 0; i < wordCount; i++) {
-        const word = words[Math.floor(Math.random() * words.length)]
-        result += word
-    }
-
-    return result
+  return result
 }
