@@ -1,3 +1,4 @@
+import { randomInt } from 'node:crypto'
 import words from './wordlist.mjs'
 
 /**
@@ -212,7 +213,7 @@ export function formatDuration (seconds) {
 * @returns {string} Concatenated words
 */
 export function generateWordId (wordCount = 3) {
-  return [...crypto.getRandomValues(new Uint16Array(wordCount))]
-    .map(idx => words[idx % words.length])
+  return range(wordCount)
+    .map(() => words[randomInt(words.length)])
     .join('')
 }
